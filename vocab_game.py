@@ -18,8 +18,8 @@ if "ans4_val" not in st.session_state:
 def reset_game():
     st.session_state.ans1_val = ""  # เคลียร์ค่าช่องข้อ 1
     st.session_state.ans2_val = ""  # เคลียร์ค่าช่องข้อ 2
-    st.session_state.ans2_val = ""  # เคลียร์ค่าช่องข้อ 3
-    st.session_state.ans2_val = ""  # เคลียร์ค่าช่องข้อ 4
+    st.session_state.ans3_val = ""  # เคลียร์ค่าช่องข้อ 3
+    st.session_state.ans4_val = ""  # เคลียร์ค่าช่องข้อ 4
     st.session_state.start = time.time()  # เริ่มเวลาใหม่
     st.session_state.is_ended = False  # ปิด Dialog
 
@@ -97,12 +97,20 @@ ans2 = st.text_input(
     "ข้อ 2: Cats love to eat `f _ s h`. 🐟",
     value=st.session_state.ans2_val,
 )
+ans3 = st.text_input(
+    "ข้อ 3: He read `b _ o k`. 📚 ",
+    value=st.session_state.ans3_val,
+)
+ans4 = st.text_input(
+    "ข้อ 4: She got a new `p _ _ n e `. 📱 ",
+    value=st.session_state.ans4_val,
+)
 
 # อัปเดตค่าล่าสุดเข้าตัวแปร
 st.session_state.ans1_val = ans1
 st.session_state.ans2_val = ans2
-
-# ✏️ [พื้นที่สำหรับนักเรียน]: เพิ่มข้อ 3, 4 ตรงนี้
+st.session_state.ans3_val = ans3
+st.session_state.ans4_val = ans4
 
 
 # 4. ปุ่มส่งคำตอบ
@@ -116,7 +124,7 @@ if "start" in st.session_state and not st.session_state.get("is_ended", False):
 
 # 5. แสดง Dialog ผลลัพธ์
 if st.session_state.get("is_ended", False):
-    show_result_dialog(ans1, ans2)
+    show_result_dialog(ans1, ans2, ans3, ans4)
 
 st.divider()
 st.write("นางสาวธวัลปภัสสร ศรีปาลวิทย์ เลขที่ 26 ม.4/9")
